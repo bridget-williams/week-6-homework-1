@@ -138,8 +138,8 @@ app.get('/artist-top-tracks', function (request, response) {
   // Make an initial list of artists
   let artists = [
     {
-      code: "06HL4z0CvFAxyc27GXpf02",
-      name: "Taylor Swift"
+      name: "Taylor Swift",
+      code: "06HL4z0CvFAxyc27GXpf02"
     },
     {
       name: "Ariana Grande",
@@ -152,7 +152,7 @@ app.get('/artist-top-tracks', function (request, response) {
   // Get the artists top tracks for each country
   artists.forEach((a) => {
     
-    spotifyApi.getArtistTopTracks(a.code, 'SE')
+    spotifyApi.getArtistTopTracks(a.code, 'US')
       .then((data) => {
         // Persist the data on this artist object
         a.data = data.body;
