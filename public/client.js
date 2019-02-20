@@ -73,8 +73,15 @@
     // Display the audio features
     keys.map(function(key, i) {
       if (data.hasOwnProperty(key)) {
-        var feature = $('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
-        feature.appendTo('#audio-features-container');
+        let p = document.createElement('p');
+        let span = document.createElement('span');
+        span.setAttribute('class','big-number');
+        span.innerHTML = data[key];
+        p.append(span);
+        p.innerHTML += key;
+        document.getElementById('audio-features-container').append(p);
+        //     $('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
+        // feature.appendTo('#audio-features-container');
       }
     });
   });
@@ -86,6 +93,8 @@
     console.groupEnd();
     
     // Display the artist's image
+    let img = document.createElement('img');
+    img.setAttribute
     var img = $('<img class="circle-image" />');
     img.attr('src', data.images[0].url);
     img.appendTo('#artist-container');
