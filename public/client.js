@@ -94,27 +94,31 @@
     
     // Display the artist's image
     let img = document.createElement('img');
-    img.setAttribute
-    var img = $('<img class="circle-image" />');
-    img.attr('src', data.images[0].url);
-    img.appendTo('#artist-container');
+    img.setAttribute('class', 'circle-image');
+    img.setAttribute('src', data.images[0].url);
+    document.getElementById('artist-container').append(img);
+
     
     // Display the artist name
-    var trackName = $('<h3>' + data.name + '</h3>');
-    trackName.appendTo('#artist-container');
+    let trackName = document.createElement('h3');
+     trackName.innerHTML = data.name;
+    document.getElementById('artist-container').append(trackName);
     
     // Display the artist's genres
     data.genres.map(function(genre, i) {
-      var genreItem = $('<p>' + genre + '</p>');
-      genreItem.appendTo('#artist-container');
+      let genreItem = document.createElement('p');
+      genreItem.innerHTML =  genre;
+      document.getElementById('artist-container').append(genreItem);
     });
     
     //display artists followers and popularity
-      var followers = $('<h4> Followers: ' + data.followers.total + '</h4>');
-    followers.appendTo('#artist-container');
+    let followers = document.createElement('h4');
+    followers.innerHTML = 'Followers: ' + data.followers.total;
+    document.getElementById('artist-container').append(followers);
     
-    var popularity = $('<h4> Popularity: ' + data.popularity + '</h4>');
-    popularity.appendTo('#artist-container');
+     let pop = document.createElement('h4');
+    pop.innerHTML = 'Popularity: ' + data.popularity;
+    document.getElementById('artist-container').append(pop);
   });
   
   $.get('/artist-top-tracks', function(data) {
@@ -125,17 +129,14 @@
     
     // Display the audio features
     data.forEach((artist) => {
-      var artistName = $('<h3>' + artist.name + '</h3>');
-      artistName.appendTo('#top-tracks-container');
+      let artistName = document.createElement('h3');
+      artistName.innerHTML =  artist.name;
+      document.getElementById('top-tracks-container').append(artistName);
       artist.data.tracks.forEach((track) =>{
-        var trackName= $('<p>' + track.name + '<p>');
-        trackName.appendTo('#top-tracks-container');
-        // console.log(track);
+        let trackName = document.createElement('p');
+        trackName.innerHTML = track.name;
+        document.getElementById('top-tracks-container').append(trackName);
       });
-      // var tracks= ('<p>' + artist.data.tracks.name + '</p>');
-      // console.log(tracks);
-      // tracks.appendTo('#top-tracks-container');
-  
     });
   });
 
