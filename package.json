@@ -14,7 +14,7 @@
     "spotify-web-api-node": "^2.3.6"
   },
   "engines": {
-    "node": "6.10.x"
+    "node": "8.10.x"
   },
   "repository": {
     "url": "https://github.com/arirawr/spotifyapi-workshop"

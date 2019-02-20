@@ -151,7 +151,6 @@ app.get('/artist-top-tracks', function (request, response) {
   
   // Get the artists top tracks for each country
   artists.forEach((a) => {
-    
     spotifyApi.getArtistTopTracks(a.code, 'US')
       .then((data) => {
         // Persist the data on this artist object
