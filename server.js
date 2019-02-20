@@ -135,6 +135,19 @@ app.get('/artist', function (request, response) {
 
 app.get('/artist-top-tracks', function (request, response) {
   
+  // Make an initial list of countries
+  let countries = [
+    {
+      name: "Sweden",
+      code: "SE"
+    },
+    {
+      name: "France",
+      code: "FR"
+    },
+  ];
+  
+  
   // Make an initial list of artists
   let artists = [
     {
@@ -142,22 +155,38 @@ app.get('/artist-top-tracks', function (request, response) {
       name: "Taylor Swift"
     },
     {
-      name: "France",
+      name: "Ariana Grande",
       code: "66CXWjxzNUsdJxJ2JdwvnR"
     },
   ];
   
+  countries.forEach((c) => {
   
-  // Get an artist's top tracks in a country
-  spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
-    .then(function(data) {
+  // Get the artists top tracks for the country
+  artists.forEach((a) => {
+
     
-      // Send the list of tracks
-      response.send(data.body.tracks);
-    
+    spotifyApi.getArtistTopTracks(a.code, 'SE')
+      .then((data) => {
+        // Persist the data on this artist object
+        a.data = data.body;
     }, function(err) {
       console.error(err);
     });
+  });
+  
+  let check = () => {
+    if (artists.filter(a => a.data !== undefined).length 
+    !== artists.length) {
+      setTimeout(check, 500);
+    } else {
+      response.send(artists);
+    }
+  }
+  
+  // Call check
+  check();
+
 });
 
 
