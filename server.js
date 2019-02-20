@@ -135,6 +135,19 @@ app.get('/artist', function (request, response) {
 
 app.get('/artist-top-tracks', function (request, response) {
   
+  // Make an initial list of artists
+  let artists = [
+    {
+      code: "06HL4z0CvFAxyc27GXpf02",
+      name: "Taylor Swift"
+    },
+    {
+      name: "France",
+      code: "66CXWjxzNUsdJxJ2JdwvnR"
+    },
+  ];
+  
+  
   // Get an artist's top tracks in a country
   spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
     .then(function(data) {
