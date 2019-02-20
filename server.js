@@ -161,12 +161,14 @@ app.get('/artist-top-tracks', function (request, response) {
   ];
   
   countries.forEach((c) => {
+    console.log(c);
+  
   
   // Get the artists top tracks for the country
   artists.forEach((a) => {
 
     
-    spotifyApi.getArtistTopTracks(a.code, 'SE')
+    spotifyApi.getArtistTopTracks(a.code, c.code)
       .then((data) => {
         // Persist the data on this artist object
         a.data = data.body;
@@ -188,7 +190,7 @@ app.get('/artist-top-tracks', function (request, response) {
   check();
 
 });
-
+});
 
 //-------------------------------------------------------------//
 //------------------------ WEB SERVER -------------------------//
