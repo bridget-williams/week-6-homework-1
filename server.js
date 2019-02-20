@@ -135,19 +135,6 @@ app.get('/artist', function (request, response) {
 
 app.get('/artist-top-tracks', function (request, response) {
   
-  // Make an initial list of countries
-  let countries = [
-    {
-      name: "Sweden",
-      code: "SE"
-    },
-    {
-      name: "France",
-      code: "FR"
-    },
-  ];
-  
-  
   // Make an initial list of artists
   let artists = [
     {
@@ -160,15 +147,12 @@ app.get('/artist-top-tracks', function (request, response) {
     },
   ];
   
-  countries.forEach((c) => {
-    console.log(c);
   
   
-  // Get the artists top tracks for the country
+  // Get the artists top tracks for each country
   artists.forEach((a) => {
-
     
-    spotifyApi.getArtistTopTracks(a.code, c.code)
+    spotifyApi.getArtistTopTracks(a.code, 'SE')
       .then((data) => {
         // Persist the data on this artist object
         a.data = data.body;
@@ -190,7 +174,7 @@ app.get('/artist-top-tracks', function (request, response) {
   check();
 
 });
-});
+
 
 //-------------------------------------------------------------//
 //------------------------ WEB SERVER -------------------------//
