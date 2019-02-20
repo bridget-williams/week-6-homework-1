@@ -89,6 +89,13 @@ $(function() {
       var genreItem = $('<p>' + genre + '</p>');
       genreItem.appendTo('#artist-container');
     });
+    
+    //display artists followers and popularity
+      var followers = $('<h4> Followers: ' + data.followers.total + '</h4>');
+    followers.appendTo('#artist-container');
+    
+    var popularity = $('<h4> Popularity: ' + data.popularity + '</h4>');
+    popularity.appendTo('#artist-container');
   });
   
   $.get('/artist-top-tracks', function(data) {
