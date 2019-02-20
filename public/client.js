@@ -12,9 +12,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // Display the track name
     var trackName = $(
       // '<h3><a href="' + data.external_urls.spotify + '" target="blank">' + data.name + '</a></h3>'
-      `<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`
+      `<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`  
     );
     trackName.appendTo('#search-track-container');
+    
+    let heading = document.createElement('h3');
+    let link = document.createElement('a');
+    let name = document.createTextNode
+    
     
     // Display the artist name
     var artists = '';
