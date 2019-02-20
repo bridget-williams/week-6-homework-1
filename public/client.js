@@ -1,7 +1,7 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
- $ (function(){
+ document.addEventListener("DOMContentLoaded", function(){
     
   fetch('/search-track').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
@@ -49,12 +49,15 @@
     // Display the covers of the playlists
     data
       .forEach((c) => {
-      document.getElementById('category-playlists-container').append(`<br><h1>${c.name}</h1><br>`)
+      let h1 = document.createElement('h1');
+      h1.innerHTML = '<br><h1>'+ c.name + '</h1><br>';
+      document.getElementById('category-playlists-container').append(h1);
       c.data.playlists.items.map(function(playlist, i) {
-      var img = $('<img class="cover-image"/>');
-      img.attr('src', playlist.images[0].url);
-      img.appendTo('#category-playlists-container');
-    });
+        let img = document.createElement('img');
+        img.setAttribute('class','cover-image');
+        img.setAttribute('src', playlist.images[0].url);
+        document.getElementById('category-playlists-container').append(img);
+      });
     })
   });
   
