@@ -108,10 +108,14 @@ $(function() {
     data.forEach((artist) => {
       var artistName = $('<h3>' + artist.name + '</h3>');
       artistName.appendTo('#top-tracks-container');
-      console.log(artist.data.tracks);
-      var tracks= ('<p>' + artist.data.tracks.name + '</p>');
-      console.log(tracks);
-      tracks.appendTo('#top-tracks-container');
+      artist.data.tracks.forEach((track) =>{
+        var trackName= $('<p>' + track.name + '<p>');
+        trackName.appendTo('#top-tracks-container');
+        // console.log(track);
+      });
+      // var tracks= ('<p>' + artist.data.tracks.name + '</p>');
+      // console.log(tracks);
+      // tracks.appendTo('#top-tracks-container');
   
     });
   });
