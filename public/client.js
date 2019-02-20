@@ -40,7 +40,7 @@
     document.getElementById('search-track-container').append(img);
   });
   
-  $.get('/category-playlists', function(data) {
+  fetch('/category-playlists').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /category-playlists', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -61,7 +61,8 @@
     })
   });
   
-  $.get('/audio-features', function(data) {
+   
+    fetch('/audio-features').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -86,7 +87,8 @@
     });
   });
   
-  $.get('/artist', function(data) {
+   
+  fetch('/artist').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -121,7 +123,7 @@
     document.getElementById('artist-container').append(pop);
   });
   
-  $.get('/artist-top-tracks', function(data) {
+   fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
     console.log(data);
